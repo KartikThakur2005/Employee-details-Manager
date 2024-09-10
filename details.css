@@ -27,6 +27,7 @@ html, body
     height: 70%;
     width: 80%;
     background-color: white;
+    position: absolute;
 }
 #nav{
     width: 100%;
@@ -38,6 +39,44 @@ html, body
     padding-left: 1vw;
     padding-right: 1vw;
 }
+
+/*---------------- add user */
+
+
+#add_user
+{
+    height: 80%;
+    width: 70%;
+    background-color:yellow;
+    position: absolute;
+  left: 15%;
+    transform: translateX(-50%);
+    transform: translateY(-120%);
+
+    z-index: 999;
+}
+
+#add_nav{
+    height: 15%;
+    width: 100%;
+    background-color: #055b26;
+}
+
+#add_body
+{
+     height: 85%;
+     width: 100%;
+     background-color: #CA8125;
+}
+
+
+
+
+
+
+
+
+/*   body and table   */
 #left
 {
     display: flex;
@@ -151,3 +190,4 @@ td button
     border: none;
     border-radius:3px;
 }
+
