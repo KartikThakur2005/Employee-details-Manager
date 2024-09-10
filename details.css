@@ -11,11 +11,25 @@ html, body
     width: 100%;
     
 }
-
-.hidden
-{
-    display: none;
+/*  animation */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; 
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
+.visible {
+    opacity: 1;
+    transform: translateY(0); /* Slide up when visible */
+    pointer-events: all;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#add_user, #box {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ---------------------------------------- */
 #container
 {
    height: 100%;
@@ -181,7 +195,7 @@ td button
     padding-left: 1vw;
     padding-right: 1vw;
 }
-#add_but
+#close_but
 {
      font-size:25px;
      color:white;
