@@ -36,16 +36,23 @@ if(localStorage.getItem("allRegData")!= null)  // after reload our data will be 
 regForm.onsubmit = (e) =>
     {
         e.preventDefault();  // this will not save data after reload
-       let
-        allRegData.push({
-            name:allInput[0].value,
-            email:allInput[1].value,
-            mobile:allInput[2].value,
-            dob:allInput[3].value,
-            password:allInput[4].value,
-        })
-      localStorage.setItem("allRegData", JSON.stringify(allRegData));
-
+       let checkEmail = allRegData.find((data)=> data.email == allInput[1].value); // if there present data it will return all
+        if( checkEmail == undefined)
+            {
+                allRegData.push({
+                    name:allInput[0].value,
+                    email:allInput[1].value,
+                    mobile:allInput[2].value,
+                    dob:allInput[3].value,
+                    password:allInput[4].value,
+                })
+              localStorage.setItem("allRegData", JSON.stringify(allRegData));
+        
+            }
+            else
+            {
+                alert("email aleready exsit");
+            }
     }
 
 
