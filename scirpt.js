@@ -3,6 +3,8 @@ let box = document.querySelector("#box");
 let addbtn = document.querySelector("#addbtn");
 let add_user = document.querySelector("#add_user");
 let close_btn = document.querySelector("#close_but");
+let tbody = document.querySelector("#tbody");
+
 
 let add_window = function() {
     box.classList.add("hidden");
@@ -47,7 +49,7 @@ regForm.onsubmit = (e) =>
                     password:allInput[4].value,
                 })
               localStorage.setItem("allRegData", JSON.stringify(allRegData));
-        
+           
             }
             else
             {
@@ -56,3 +58,33 @@ regForm.onsubmit = (e) =>
     }
 
 
+
+//  uploding data in html
+
+
+let printData = function()
+{
+   allRegData.forEach((data, index) =>
+    {
+        tbody.innerHTML += ` <tr>
+                            <td>${index+1}</td>
+                            <td>${data.name}/td>
+                            <td>${data.email}</td>
+                            <td>${data.mobile}</td>
+                            <td>${data.dob}/td>
+                            <td>${data.password}</td>
+                             <td>
+                                <button class="button1">
+                                    <i class="ri-edit-line"></i>
+                                </button>
+                                <button class="button2">
+                                    <i class="ri-delete-bin-6-line"></i>
+                                </button>
+                             </td>
+                        </tr>
+                       
+                        `
+    })
+}
+
+printData();
