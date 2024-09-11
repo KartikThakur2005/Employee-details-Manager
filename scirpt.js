@@ -69,10 +69,10 @@ let printData = function()
     {
         tbody.innerHTML += ` <tr>
                             <td>${index+1}</td>
-                            <td>${data.name}/td>
+                            <td>${data.name}</td>
                             <td>${data.email}</td>
                             <td>${data.mobile}</td>
-                            <td>${data.dob}/td>
+                            <td>${data.dob}</td>
                             <td>${data.password}</td>
                              <td>
                                 <button  id="edit" index = ${index} class="button1">
@@ -86,11 +86,11 @@ let printData = function()
                        
                         `
     })
-    deletuser()
+    deletuser();     
+
 }
 
 //  dalete a user
-
 let deletuser = function()
 {
    let alldel = tbody.querySelectorAll("#delete");
@@ -99,8 +99,14 @@ let deletuser = function()
     {
         btn.onclick = () =>{
             let index = btn.getAttribute("index");
-            alert(index);
+            allRegData.splice(index, 1);
+            localStorage.setItem("allRegData",JSON.stringify(allRegData))
+            printData();
         }
     }
 }
+
 printData();
+// deletuser();  
+
+
