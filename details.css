@@ -25,7 +25,7 @@ html, body
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-#add_user, #box {
+#add_user, #box , #delete-pop{
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
@@ -35,7 +35,7 @@ html, body
    height: 100%;
    width: 100%;
    display: flex;
-   background-color:#7ACBC8;
+   background-color:#dddddd;
    align-items: center;
    justify-content: center;
 }
@@ -46,11 +46,12 @@ html, body
     width: 80%;
     background-color: white;
     position: absolute;
+
 }
 #nav{
     width: 100%;
     height: 15%;
-    background-color: #CA8125;
+    background-color:gray;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -110,7 +111,7 @@ button
     width: 100%;
 }
 
-
+/* table -------------------- */
 
 .table-container {
     width: 100%;
@@ -174,6 +175,72 @@ td button
     border-radius:3px;
 }
 
+
+
+/*  delete user pop up */
+
+#delete-pop
+{
+     height: 50%;
+     width: 40%;
+     background-color:#f1f1f1;
+     position: absolute;
+    
+    transform:translateY(20%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dddddd;
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
+    padding-top: 2vw;
+    justify-content: space-evenly;
+ 
+}
+
+#dele-img
+{
+height: 10vw;
+ width: 10vw;
+background-color: #055b26;
+ border-radius: 100%;
+ 
+ 
+}
+#dele-img img
+{
+     height:100%;
+     width: 100%;
+     object-fit: cover;
+     border-radius: 100%;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     
+
+}
+
+#delete-pop-but
+{
+    height: 40%;
+    width: 100%;
+   
+    display: flex;
+    align-items: end;
+    justify-content:center;
+    padding-bottom: 40px;
+    gap: 2vw;
+    
+}
+#delete-pop h3
+{
+     color: #D54D52;
+     font-size: 3vw;
+}
+
+
+
+/* ---------------------------------- */
 
 
 #add_user

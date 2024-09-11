@@ -4,7 +4,7 @@ let addbtn = document.querySelector("#addbtn");
 let add_user = document.querySelector("#add_user");
 let close_btn = document.querySelector("#close_but");
 let tbody = document.querySelector("#tbody");
-
+let delete_pop = document.querySelector("#delete-pop");
 
 let add_window = function() {
     box.classList.add("hidden");
@@ -35,7 +35,7 @@ if(localStorage.getItem("allRegData")!= null)  // after reload our data will be 
     allRegData = JSON.parse(localStorage.getItem("allRegData"));
 }
 
-regForm.onsubmit = (e) =>
+    regForm.onsubmit = (e) =>
     {
         e.preventDefault();  // this will not save data after reload
        let checkEmail = allRegData.find((data)=> data.email == allInput[1].value); // if there present data it will return all
@@ -55,6 +55,7 @@ regForm.onsubmit = (e) =>
             {
                 alert("email aleready exsit");
             }
+        clos_add();
     }
 
 
@@ -91,6 +92,14 @@ let printData = function()
 }
 
 //  dalete a user
+
+let delepop = function()
+{
+       delete_pop.classList.remove(".hidden");
+    delete_pop.classList.add("visible");
+
+
+}
 let deletuser = function()
 {
    let alldel = tbody.querySelectorAll("#delete");
@@ -98,13 +107,17 @@ let deletuser = function()
    for( let btn of alldel)
     {
         btn.onclick = () =>{
+            let flag = delepop();
+            if(flag){
             let index = btn.getAttribute("index");
             allRegData.splice(index, 1);
             localStorage.setItem("allRegData",JSON.stringify(allRegData))
             printData();
+            }
         }
     }
 }
+
 
 printData();
 // deletuser();  
