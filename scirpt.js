@@ -49,7 +49,7 @@ regForm.onsubmit = (e) =>
                     password:allInput[4].value,
                 })
               localStorage.setItem("allRegData", JSON.stringify(allRegData));
-           
+              printData();
             }
             else
             {
@@ -64,6 +64,7 @@ regForm.onsubmit = (e) =>
 
 let printData = function()
 {
+    tbody.innerHTML =""; //---> for not reting duplicate data on sumbit new user
    allRegData.forEach((data, index) =>
     {
         tbody.innerHTML += ` <tr>
@@ -74,10 +75,10 @@ let printData = function()
                             <td>${data.dob}/td>
                             <td>${data.password}</td>
                              <td>
-                                <button class="button1">
+                                <button  id="edit" index = ${index} class="button1">
                                     <i class="ri-edit-line"></i>
                                 </button>
-                                <button class="button2">
+                                <button id = "delete" index = ${index} class="button2">
                                     <i class="ri-delete-bin-6-line"></i>
                                 </button>
                              </td>
@@ -85,6 +86,21 @@ let printData = function()
                        
                         `
     })
+    deletuser()
 }
 
+//  dalete a user
+
+let deletuser = function()
+{
+   let alldel = tbody.querySelectorAll("#delete");
+
+   for( let btn of alldel)
+    {
+        btn.onclick = () =>{
+            let index = btn.getAttribute("index");
+            alert(index);
+        }
+    }
+}
 printData();
