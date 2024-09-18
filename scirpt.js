@@ -97,50 +97,48 @@ let printData = function()
 
 let abc = function()
 {
-
+       delete_pop.classList.remove(".hidden");
+       delete_pop.classList.add(".visible");
 }
-let delete_confirm = ()=> {return new Promise((resolve, reject)=>{
-    abc()
-    .then((willdelete)=>{
-        if(willdelete)
-            {
-                resolve(true);
-            }
+let delete_confirm = () => {
+    return new Promise((resolve, reject) => {
+        delete_pop.classList.remove("hidden"); 
 
-      else{
-          reject(false);
-      }
-    })
+        
+        confirm.onclick = () => {
+            resolve(true);
+            delete_pop.classList.add("hidden"); 
+        };
 
-});
-}
+        cancle.onclick = () => {
+            reject(false); 
+            delete_pop.classList.add("hidden"); 
+        };
+    });
+};
 
+// Handle delete action
+let deletuser = function() {
+    let alldel = tbody.querySelectorAll("#delete");
 
-let deletuser = function()
-{
-   let alldel = tbody.querySelectorAll("#delete");
+    for (let btn of alldel) {
+        btn.onclick = async () => {
+            try {
+                let confirmed = await delete_confirm(); 
 
-   for( let btn of alldel)
-    {
-        btn.onclick =async () =>{
-             
-            let x = await delete_confirm();
-            if(x)
-                {
+                if (confirmed) {
                     let index = btn.getAttribute("index");
                     allRegData.splice(index, 1);
-                    localStorage.setItem("allRegData",JSON.stringify(allRegData))
-                    printData();
+                    localStorage.setItem("allRegData", JSON.stringify(allRegData)); 
+                    printData(); 
                 }
-        
-           
-            
-        }
+                } catch (err) {
+                    console.log("Delete action canceled");
+                }
+        };
     }
-}
+};
 
-
-printData();
-// deletuser();  
+printData();// deletuser();  
 
 
