@@ -5,6 +5,8 @@ let add_user = document.querySelector("#add_user");
 let close_btn = document.querySelector("#close_but");
 let tbody = document.querySelector("#tbody");
 let delete_pop = document.querySelector("#delete-pop");
+let confirm = document.querySelector("#confirm");
+let cancle = document.querySelector("#cancle");
 
 let add_window = function() {
     box.classList.add("hidden");
@@ -93,27 +95,46 @@ let printData = function()
 
 //  dalete a user
 
-let delepop = function()
+let abc = function()
 {
-       delete_pop.classList.remove(".hidden");
-    delete_pop.classList.add("visible");
-
 
 }
+let delete_confirm = ()=> {return new Promise((resolve, reject)=>{
+    abc()
+    .then((willdelete)=>{
+        if(willdelete)
+            {
+                resolve(true);
+            }
+
+      else{
+          reject(false);
+      }
+    })
+
+});
+}
+
+
 let deletuser = function()
 {
    let alldel = tbody.querySelectorAll("#delete");
 
    for( let btn of alldel)
     {
-        btn.onclick = () =>{
-            let flag = delepop();
-            if(flag){
-            let index = btn.getAttribute("index");
-            allRegData.splice(index, 1);
-            localStorage.setItem("allRegData",JSON.stringify(allRegData))
-            printData();
-            }
+        btn.onclick =async () =>{
+             
+            let x = await delete_confirm();
+            if(x)
+                {
+                    let index = btn.getAttribute("index");
+                    allRegData.splice(index, 1);
+                    localStorage.setItem("allRegData",JSON.stringify(allRegData))
+                    printData();
+                }
+        
+           
+            
         }
     }
 }
