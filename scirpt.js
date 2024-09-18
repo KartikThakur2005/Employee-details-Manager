@@ -90,16 +90,12 @@ let printData = function()
                         `
     })
     deletuser();     
-
+    user_edit();
 }
 
 //  dalete a user
 
-let abc = function()
-{
-       delete_pop.classList.remove(".hidden");
-       delete_pop.classList.add(".visible");
-}
+
 let delete_confirm = () => {
     return new Promise((resolve, reject) => {
         delete_pop.classList.remove("hidden"); 
@@ -139,6 +135,23 @@ let deletuser = function() {
     }
 };
 
-printData();// deletuser();  
+
+// ------------------------ Editing the user details --------------------------------------
+
+let user_edit = () =>
+{
+    let alledit = tbody.querySelectorAll("#edit");
+
+    for(let btn of alledit)
+    {
+         btn.onclick = () =>
+            {
+                let index = btn.getAttribute("index");
+                alert(index);
+            }
+    }
+}
+
+printData();
 
 
