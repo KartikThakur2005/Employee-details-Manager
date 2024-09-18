@@ -30,6 +30,7 @@ close_btn.addEventListener("click", clos_add);
 //  Form registration
 let regForm = document.querySelector("#register-form");
 let allInput = regForm.querySelectorAll("INPUT"); // thsi return an list od all input 
+let allreg_but = regForm.querySelectorAll("button");
 let allRegData = [];
 
 if(localStorage.getItem("allRegData")!= null)  // after reload our data will be saved here from local sorage
@@ -70,6 +71,10 @@ let printData = function()
     tbody.innerHTML =""; //---> for not reting duplicate data on sumbit new user
    allRegData.forEach((data, index) =>
     {
+        let datastr = JSON.stringify(data);
+        let finaldata = datastr.replace(/"/g, "'"); 
+    
+        
         tbody.innerHTML += ` <tr>
                             <td>${index+1}</td>
                             <td>${data.name}</td>
@@ -78,7 +83,7 @@ let printData = function()
                             <td>${data.dob}</td>
                             <td>${data.password}</td>
                              <td>
-                                <button  id="edit" index = ${index} class="button1">
+                                <button  id="edit" index = ${index}  data ="${finaldata}" class="button1">
                                     <i class="ri-edit-line"></i>
                                 </button>
                                 <button id = "delete" index = ${index} class="button2">
@@ -138,20 +143,31 @@ let deletuser = function() {
 
 // ------------------------ Editing the user details --------------------------------------
 
-let user_edit = () =>
-{
+let user_edit = () => {
     let alledit = tbody.querySelectorAll("#edit");
 
-    for(let btn of alledit)
-    {
-         btn.onclick = () =>
-            {
-                let index = btn.getAttribute("index");
-                alert(index);
-            }
-    }
-}
+    for (let btn of alledit) {
+        btn.onclick = () => {
+        
+            let data = btn.getAttribute("data"); 
+           
+            let finaldata = data.replace(/'/g, '"'); 
 
+            let dataobj = JSON.parse(finaldata);
+            add_window(); 
+
+             allInput[0].value = dataobj.name;
+             allInput[1].value = dataobj.email;
+             allInput[2].value = dataobj.mobile;
+             allInput[3].value = dataobj.dob;
+             allInput[4].value = dataobj.password;
+
+            allreg_but[0].disabled = false;
+             allreg_but[1].disabled = true;
+
+        };
+    }
+};
 printData();
 
 
