@@ -150,6 +150,7 @@ let user_edit = () => {
         btn.onclick = () => {
         
             let data = btn.getAttribute("data"); 
+            let index = btn.getAttribute("index");
            
             let finaldata = data.replace(/'/g, '"'); 
 
@@ -164,7 +165,26 @@ let user_edit = () => {
 
             allreg_but[0].disabled = false;
              allreg_but[1].disabled = true;
+              
+             allreg_but[0].onclick = ()=>
+                {
+                    allRegData[index] = {
+                        name:allInput[0].value,
+                    email:allInput[1].value,
+                    mobile:allInput[2].value,
+                    dob:allInput[3].value,
+                    password:allInput[4].value,
+                
+                    }
 
+                    localStorage.setItem("allRegData", JSON.stringify(allRegData));
+                    allreg_but[0].disabled = true;
+             allreg_but[1].disabled = false;
+                    printData();
+                  
+                 
+                  clos_add();
+                }
         };
     }
 };
