@@ -7,6 +7,11 @@ let tbody = document.querySelector("#tbody");
 let delete_pop = document.querySelector("#delete-pop");
 let confirm = document.querySelector("#confirm");
 let cancle = document.querySelector("#cancle");
+let regForm = document.querySelector("#register-form");
+let allInput = regForm.querySelectorAll("input"); // thsi return an list od all input 
+let allreg_but = regForm.querySelectorAll("button");
+let allRegData = [];
+let search  = document.querySelector("#search");
 
 let add_window = function() {
     box.classList.add("hidden");
@@ -28,10 +33,6 @@ close_btn.addEventListener("click", clos_add);
 // ---------------------------------------------
 
 //  Form registration
-let regForm = document.querySelector("#register-form");
-let allInput = regForm.querySelectorAll("INPUT"); // thsi return an list od all input 
-let allreg_but = regForm.querySelectorAll("button");
-let allRegData = [];
 
 if(localStorage.getItem("allRegData")!= null)  // after reload our data will be saved here from local sorage
 {
@@ -188,6 +189,30 @@ let user_edit = () => {
         };
     }
 };
+
+
+
+// -------------------------------- Search ------------------------------
+
+let search_fun = () =>{
+    let value = search.value.toLowerCase();
+   let tr = tbody.querySelectorAll("TR");
+   let i;
+   for( i =0; i < tr.length; i++)
+    {
+        let allTD = tr[i].querySelectorAll("TD");
+        let name = allTD[1].innerHTML;
+       if(name.toLocaleLowerCase().indexOf(value) != -1)
+     {
+        tr[i].style.diplatt = "";
+     }
+    }
+}
+
+search.oninput = ()=>{
+     search_fun();
+}
+
 printData();
 
 
