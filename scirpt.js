@@ -202,9 +202,19 @@ let search_fun = () =>{
     {
         let allTD = tr[i].querySelectorAll("TD");
         let name = allTD[1].innerHTML;
+        let email = allTD[2].innerHTML
        if(name.toLocaleLowerCase().indexOf(value) != -1)
      {
-        tr[i].style.diplatt = "";
+        tr[i].style.display = "";
+        
+     }
+     else  if(email.toLocaleLowerCase().indexOf(value) != -1)
+        {
+           tr[i].style.display = "";
+           
+        }
+     else{
+        tr[i].style.display = "none";
      }
     }
 }
