@@ -12,6 +12,7 @@ let allInput = regForm.querySelectorAll("input"); // thsi return an list od all 
 let allreg_but = regForm.querySelectorAll("button");
 let allRegData = [];
 let search  = document.querySelector("#search");
+let deleteall = document.querySelector("#deleteall"); 
 
 let add_window = function() {
     box.classList.add("hidden");
@@ -97,6 +98,7 @@ let printData = function()
     })
     deletuser();     
     user_edit();
+    delete_all_fun();
 }
 
 //  dalete a user
@@ -203,12 +205,18 @@ let search_fun = () =>{
         let allTD = tr[i].querySelectorAll("TD");
         let name = allTD[1].innerHTML;
         let email = allTD[2].innerHTML
+        let number = allTD[3].innerHTML;
        if(name.toLocaleLowerCase().indexOf(value) != -1)
      {
         tr[i].style.display = "";
         
      }
      else  if(email.toLocaleLowerCase().indexOf(value) != -1)
+        {
+           tr[i].style.display = "";
+           
+        }
+      else  if(number.toLocaleLowerCase().indexOf(value) != -1)
         {
            tr[i].style.display = "";
            
@@ -221,6 +229,24 @@ let search_fun = () =>{
 
 search.oninput = ()=>{
      search_fun();
+}
+
+
+// ------------------------------------------- delteall ---------------------------
+let delete_all_fun = function()
+{
+     deleteall.onclick = async ()=>{
+    try {
+        let confirmed = await delete_confirm(); 
+
+        if (confirmed) {
+             localStorage.removeItem("allRegData");
+             printData();
+        }
+        } catch (err) {
+            console.log("Delete action canceled");
+        }
+}
 }
 
 printData();
