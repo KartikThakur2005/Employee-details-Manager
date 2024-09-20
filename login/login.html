@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Employee & HR Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-      
-    <div id="main">
-         <div id="user">
-            
-         </div>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        
+        <div class="tab">
+            <button id="employeeTab">Employee Login</button>
+            <button id="hrTab">HR Login</button>
+        </div>
+
+
+        <form id="employeeLoginForm">
+            <h3>Employee Login</h3>
+            <label for="employeeEmail">Email:</label>
+            <input type="email" id="employeeEmail" required>
+
+            <label for="employeePassword">Password:</label>
+            <input type="password" id="employeePassword" required>
+
+            <button type="submit">Login</button>
+            <p id="employeeMessage"></p>
+        </form>
+
+    
+        <form id="hrLoginForm">
+            <h3>HR Login</h3>
+            <label for="hrPassword">HR Password:</label>
+            <input type="password" id="hrPassword" required>
+
+            <button type="submit">Login</button>
+            <p id="hrMessage"></p>
+        </form>
     </div>
 
+    <script src="login.js"></script>
 </body>
-<script src="login.js"></script>
 </html>
