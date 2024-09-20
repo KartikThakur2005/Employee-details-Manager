@@ -42,7 +42,7 @@
 
         regForm.onsubmit = (e) =>
         {
-            e.preventDefault();  // this will not save data after reload
+            e.preventDefault();  
         let checkEmail = allRegData.find((data)=> data.email == allInput[1].value); // if there present data it will return all
             if( checkEmail == undefined)
                 {

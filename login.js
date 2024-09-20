@@ -3,6 +3,10 @@ const employeeLoginForm = document.getElementById('employeeLoginForm');
 const hrLoginForm = document.getElementById('hrLoginForm');
 const employeeTab = document.getElementById('employeeTab');
 const hrTab = document.getElementById('hrTab');
+let allRegData = [];
+let user_input  =  employeeLoginForm.querySelectorAll("input");
+let log_cont = document.querySelector(".login-container");
+let user_cont =  document.querySelector(".container");
 
 function showEmployeeLogin() {
     employeeLoginForm.style.display = 'block';
@@ -19,22 +23,62 @@ function showHRLogin() {
     employeeTab.classList.remove('active');
 }
 
+function checkUser()
+{
+    if(localStorage.getItem("allRegData")!= null)  // after reload our data will be saved here from local sorage
+    {
+        allRegData = JSON.parse(localStorage.getItem("allRegData"));
+    }
+
+    if(allRegData.find((data)=> data.email == user_input[0].value) && allRegData.find((data)=> data.password == user_input[1].value))
+    {
+    
+       return true;
+    }
+
+    return false;
+
+     
+}
+
+function showUser()
+{
+       if(allRegData.find((data)=> data.email == user_input[0].value) && allRegData.find((data)=> data.password == user_input[1].value))
+        {
+             document.getElementById("#name").value =
+             document.getElementById("#email") = 
+             document.getElementById("#dob") = 
+             document.getElementById("#nuber") = 
+    
+           
+        }
+     log_cont.classList.add("hidden");
+
+     user_cont.classList.remove("hidden");
+     user_cont.classList.add("visible");
+      
+
+
+}
+
 // Add event listeners to switch between forms
 employeeTab.addEventListener('click', showEmployeeLogin);
 hrTab.addEventListener('click', showHRLogin);
 
 // Employee Login form submit event
-employeeLoginForm.addEventListener('submit', function (event) {
+employeeLoginForm.addEventListener('submit', function (event) 
+{
     event.preventDefault();
-    const email = document.getElementById('employeeEmail').value;
-    const password = document.getElementById('employeePassword').value;
+   
     const message = document.getElementById('employeeMessage');
 
-    if (email === 'employee@example.com' && password === 'password') {
-        message.style.color = 'green';
-        message.textContent = 'Employee Login Successful';
-        message.style.display = 'block';
-    } else {
+
+    if (checkUser()) 
+    {
+         showUser();
+       
+    } 
+    else {
         message.style.color = 'red';
         message.textContent = 'Invalid Email or Password';
         message.style.display = 'block';
@@ -61,3 +105,11 @@ hrLoginForm.addEventListener('submit', function (event) {
 
 
 showEmployeeLogin();
+
+
+
+            
+           
+        
+
+
