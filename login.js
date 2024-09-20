@@ -3,6 +3,7 @@ const employeeLoginForm = document.getElementById('employeeLoginForm');
 const hrLoginForm = document.getElementById('hrLoginForm');
 const employeeTab = document.getElementById('employeeTab');
 const hrTab = document.getElementById('hrTab');
+let logoutBtn = document.getElementById("logoutBtn");
 let allRegData = [];
 let user_input  =  employeeLoginForm.querySelectorAll("input");
 let log_cont = document.querySelector(".login-container");
@@ -62,6 +63,22 @@ function showUser()
 
     
 }
+
+
+// ------------------- For logout user ----------------------
+
+logoutBtn.addEventListener("click",()=>{
+    
+    log_cont.classList.remove("hidden");
+    user_cont.classList.add("hidden");
+    user_cont.classList.remove("visible");
+  
+    
+})
+
+
+
+
 
 // Add event listeners to switch between forms
 employeeTab.addEventListener('click', showEmployeeLogin);
