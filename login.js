@@ -41,24 +41,26 @@ function checkUser()
      
 }
 
-function showUser()
+function showUser() 
 {
-       if(allRegData.find((data)=> data.email == user_input[0].value) && allRegData.find((data)=> data.password == user_input[1].value))
-        {
-             document.getElementById("#name").value =
-             document.getElementById("#email") = 
-             document.getElementById("#dob") = 
-             document.getElementById("#nuber") = 
+
+    let currentUser = allRegData.find((data) => data.email == user_input[0].value && data.password == user_input[1].value);
+
+    log_cont.classList.add("hidden");
+    user_cont.classList.remove("hidden");
+    user_cont.classList.add("visible");
+
+    if (currentUser) {
+       
+        document.getElementById("name").innerHTML  = currentUser.name;  // Remove '#' from the element IDs
+        document.getElementById("email").innerHTML  = currentUser.email;
+        document.getElementById("dob").innerHTML  = currentUser.dob;
+        document.getElementById("number").innerHTML  = currentUser.mobile;
     
-           
-        }
-     log_cont.classList.add("hidden");
-
-     user_cont.classList.remove("hidden");
-     user_cont.classList.add("visible");
-      
+    }
 
 
+    
 }
 
 // Add event listeners to switch between forms

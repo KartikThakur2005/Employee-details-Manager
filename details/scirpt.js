@@ -15,7 +15,7 @@
     let deleteall = document.querySelector("#deleteall"); 
 
     let add_window = function() {
-        box.classList.add("hidden");
+        box.classList.add(  "hidden");
         box.classList.remove("visible");
         add_user.classList.add("visible");
         add_user.classList.remove("hidden");
