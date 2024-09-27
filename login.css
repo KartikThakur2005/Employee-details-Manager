@@ -189,20 +189,4 @@ button:hover {
 }
 
 
-@media (max-width: 600px) {
-    .row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
-    .column.label,
-    .column.value {
-        width: 100%;
-        text-align: left;
-        padding: 5px 0; 
-    }
-
-    .column.value {
-        text-align: left;
-    }
-}

@@ -315,3 +315,45 @@ span
     
 }
 
+/* Responsive nav bar */
+@media (max-width: 768px) {
+    #nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    #left, #right {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #right input {
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #nav {
+        padding: 5px;
+    }
+
+    #left, #right {
+        gap: 5px;
+    }
+
+    #right input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}

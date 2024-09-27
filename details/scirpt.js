@@ -13,6 +13,7 @@
     let allRegData = [];
     let search  = document.querySelector("#search");
     let deleteall = document.querySelector("#deleteall"); 
+    let logout = document.querySelector("#logout")
 
     let add_window = function() {
         box.classList.add(  "hidden");
@@ -251,5 +252,14 @@
     
 
     printData();
+
+
+
+    //  ---------------------------------- Logoout ---------------------
+
+    logout.onclick = ()=>{
+
+        window.location.href ="../login.html";
+    }
 
 
